@@ -29,7 +29,8 @@
 
   /* ---------------- Category list view ---------------- */
 
-  function renderCategoryList() {
+  function renderCategoryList(opts) {
+    opts = opts || {};
     session = null;
     var cardsHtml = CATEGORIES.map(function (cat) {
       var count = THEORY_QUESTIONS.filter(function (q) { return q.category === cat.id; }).length;
@@ -59,7 +60,7 @@
       });
     });
 
-    focusHeading("theory-practice-heading");
+    if (opts.focus !== false) focusHeading("theory-practice-heading");
   }
 
   function focusHeading(id) {
@@ -235,7 +236,7 @@
   function init() {
     root = document.getElementById("theory-practice-app");
     if (!root) return;
-    renderCategoryList();
+    renderCategoryList({ focus: false });
   }
 
   TheoryApp.register(init);
