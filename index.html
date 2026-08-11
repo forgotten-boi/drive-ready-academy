@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Driving Licence Prep</title>
+<meta name="description" content="Practice for the UK DVSA theory and practical driving tests — question bank, mock tests, hazard perception guide, show me tell me flashcards and a test centre finder.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <div class="app-header__brand">
+      <span class="app-header__icon" aria-hidden="true">🚗</span>
+      <div>
+        <h1>UK Driving Licence Prep</h1>
+        <p class="app-header__tagline">Practice smart. Arrive confident.</p>
+      </div>
+    </div>
+    <nav class="tab-bar" role="tablist" aria-label="Main sections">
+      <button type="button" class="tab-bar__btn is-active" role="tab" aria-selected="true" aria-controls="panel-theory" id="tab-theory" data-target="panel-theory">
+        <span class="tab-bar__icon" aria-hidden="true">📘</span> Theory Test Prep
+      </button>
+      <button type="button" class="tab-bar__btn" role="tab" aria-selected="false" aria-controls="panel-practical" id="tab-practical" data-target="panel-practical">
+        <span class="tab-bar__icon" aria-hidden="true">🚦</span> Practical Test &amp; Centre Finder
+      </button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+
+    <!-- ============ THEORY TEST PREP ============ -->
+    <section id="panel-theory" class="panel is-active" role="tabpanel" aria-labelledby="tab-theory">
+
+      <nav class="subtab-bar" role="tablist" aria-label="Theory Test Prep sections">
+        <button type="button" class="subtab-bar__btn is-active" role="tab" aria-selected="true" aria-controls="theory-practice" id="subtab-theory-practice" data-target="theory-practice">Practice by Category</button>
+        <button type="button" class="subtab-bar__btn" role="tab" aria-selected="false" aria-controls="theory-mock" id="subtab-theory-mock" data-target="theory-mock">Mock Test</button>
+        <button type="button" class="subtab-bar__btn" role="tab" aria-selected="false" aria-controls="theory-progress" id="subtab-theory-progress" data-target="theory-progress">My Progress</button>
+        <button type="button" class="subtab-bar__btn" role="tab" aria-selected="false" aria-controls="theory-hazard" id="subtab-theory-hazard" data-target="theory-hazard">Hazard Perception</button>
+      </nav>
+
+      <div id="theory-practice" class="subpanel is-active" role="tabpanel" aria-labelledby="subtab-theory-practice">
+        <div class="empty-state card">
+          <p>Category practice mode is coming in the next update.</p>
+        </div>
+      </div>
+
+      <div id="theory-mock" class="subpanel" role="tabpanel" aria-labelledby="subtab-theory-mock" hidden>
+        <div class="empty-state card">
+          <p>Timed mock test mode is coming in the next update.</p>
+        </div>
+      </div>
+
+      <div id="theory-progress" class="subpanel" role="tabpanel" aria-labelledby="subtab-theory-progress" hidden>
+        <div class="empty-state card">
+          <p>Your progress dashboard will appear here once scoring is wired up.</p>
+        </div>
+      </div>
+
+      <div id="theory-hazard" class="subpanel" role="tabpanel" aria-labelledby="subtab-theory-hazard" hidden>
+        <div class="empty-state card">
+          <p>The hazard perception explainer is coming in the next update.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============ PRACTICAL TEST & CENTRE FINDER ============ -->
+    <section id="panel-practical" class="panel" role="tabpanel" aria-labelledby="tab-practical" hidden>
+
+      <nav class="subtab-bar" role="tablist" aria-label="Practical Test &amp; Centre Finder sections">
+        <button type="button" class="subtab-bar__btn is-active" role="tab" aria-selected="true" aria-controls="practical-checklist" id="subtab-practical-checklist" data-target="practical-checklist">Requirements Checklist</button>
+        <button type="button" class="subtab-bar__btn" role="tab" aria-selected="false" aria-controls="practical-flashcards" id="subtab-practical-flashcards" data-target="practical-flashcards">Show Me Tell Me</button>
+        <button type="button" class="subtab-bar__btn" role="tab" aria-selected="false" aria-controls="practical-centres" id="subtab-practical-centres" data-target="practical-centres">Centre Finder</button>
+      </nav>
+
+      <div id="practical-checklist" class="subpanel is-active" role="tabpanel" aria-labelledby="subtab-practical-checklist">
+        <div class="empty-state card">
+          <p>The practical test requirements checklist is coming in the next update.</p>
+        </div>
+      </div>
+
+      <div id="practical-flashcards" class="subpanel" role="tabpanel" aria-labelledby="subtab-practical-flashcards" hidden>
+        <div class="empty-state card">
+          <p>The Show Me Tell Me flashcard quiz is coming in the next update.</p>
+        </div>
+      </div>
+
+      <div id="practical-centres" class="subpanel" role="tabpanel" aria-labelledby="subtab-practical-centres" hidden>
+        <div class="empty-state card">
+          <p>The test centre finder is coming in the next update.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Practice content only — this is an independent study aid, not official DVSA material or a booking service. Always confirm test centre details and book your test on <a href="https://www.gov.uk/browse/driving/learning-to-drive" target="_blank" rel="noopener">gov.uk</a>.</p>
+  </footer>
+
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
