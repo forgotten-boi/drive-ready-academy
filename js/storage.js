@@ -3,7 +3,7 @@
    object if sessionStorage is unavailable (private browsing edge cases). */
 
 var AppStorage = (function () {
-  var PREFIX = "ukDrivingPrep::";
+  var PREFIX = "ukDrivingPrep::v1::";
   var memoryFallback = {};
   var storageOk = (function () {
     try {
