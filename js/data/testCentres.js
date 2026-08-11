@@ -1,0 +1,146 @@
+/* Sample driving test centre data for London and Greater Manchester, as a
+   starting point — structured so more regions/centres can be appended
+   easily (each entry is independent; nothing elsewhere in the app assumes
+   a fixed list length or region set).
+   IMPORTANT — data provenance and limits, please read before extending:
+   - Names, towns and addresses were compiled from public web sources, not
+     the DVSA API, and DVSA opens, closes and relocates centres over time.
+     Always verify on gov.uk before relying on this for a real booking.
+   - `roadFeatures` and `notes` are this app's own general impression of
+     the surrounding area (e.g. "known for roundabouts"), NOT official DVSA
+     route data. DVSA doesn't publish official test routes, and the actual
+     route on the day varies by examiner — treat these as loose orientation,
+     not a route guide. */
+
+var TEST_CENTRES = [
+  {
+    id: "pinner",
+    name: "Pinner",
+    region: "London",
+    town: "Pinner",
+    postcode: "HA5 2DZ",
+    address: "221 Tolcarne Drive, Northwood, HA5 2DZ",
+    roadFeatures: ["suburban", "roundabouts", "residential"],
+    notes: "Mostly suburban north-west London streets, with a number of roundabouts in the surrounding area."
+  },
+  {
+    id: "high-barnet",
+    name: "High Barnet",
+    region: "London",
+    town: "Barnet",
+    postcode: "EN5 1AE",
+    address: "Raydean House, Western Parade, High Barnet, EN5 1AE",
+    roadFeatures: ["suburban", "hills", "roundabouts"],
+    notes: "Barnet has some noticeably hilly roads for north London, along with suburban streets and roundabouts."
+  },
+  {
+    id: "tottenham",
+    name: "Tottenham",
+    region: "London",
+    town: "Tottenham",
+    postcode: "N17 8LB",
+    address: "Devonshire Hill Nursery and Primary School, Weir Hall Road, N17 8LB",
+    roadFeatures: ["urban", "high-traffic", "box-junctions"],
+    notes: "Dense, busy north London streets with box junctions and generally heavier traffic."
+  },
+  {
+    id: "lower-morden",
+    name: "Lower Morden",
+    region: "London",
+    town: "Morden",
+    postcode: "SM4 4PE",
+    address: "28 Tudor Drive, Lower Morden, SM4 4PE",
+    roadFeatures: ["suburban", "roundabouts"],
+    notes: "Suburban south-west London roads, with a mix of residential streets and roundabouts nearby."
+  },
+  {
+    id: "barking",
+    name: "Barking",
+    region: "London",
+    town: "Barking",
+    postcode: "IG11 8QF",
+    address: "84 Tanner Street, Barking and Dagenham, IG11 8QF",
+    roadFeatures: ["urban", "dual-carriageway", "industrial-estates"],
+    notes: "A mix of urban streets and industrial-estate roads, with dual carriageways in the wider area."
+  },
+  {
+    id: "croydon",
+    name: "Croydon",
+    region: "London",
+    town: "Croydon",
+    postcode: "CR0 3HH",
+    address: "111 Canterbury Road, Croydon, CR0 3HH",
+    roadFeatures: ["urban", "one-way-system", "trams"],
+    notes: "Busy town-centre driving, including one-way sections and tram lines to be aware of."
+  },
+  {
+    id: "isleworth",
+    name: "Isleworth",
+    region: "London",
+    town: "Isleworth",
+    postcode: "TW7 6ER",
+    address: "Worton Hall, Worton Road, Isleworth, TW7 6ER",
+    roadFeatures: ["dual-carriageway", "suburban"],
+    notes: "Suburban west London streets, with dual-carriageway sections (such as the A4) in the surrounding area."
+  },
+  {
+    id: "sale",
+    name: "Sale",
+    region: "Manchester",
+    town: "Sale",
+    postcode: "M33 3AQ",
+    address: "Marsland Road, Sale, M33 3AQ",
+    roadFeatures: ["suburban", "roundabouts"],
+    notes: "Suburban Trafford streets with a number of roundabouts around the town centre."
+  },
+  {
+    id: "wythenshawe",
+    name: "Wythenshawe",
+    region: "Manchester",
+    town: "Wythenshawe",
+    postcode: "M23 0DF",
+    address: "Sale Road, Wythenshawe, Manchester, M23 0DF",
+    roadFeatures: ["dual-carriageway", "roundabouts"],
+    notes: "Close to the airport approach roads, so dual carriageways and larger roundabouts feature in the area."
+  },
+  {
+    id: "manchester-west-didsbury",
+    name: "Manchester (West Didsbury)",
+    region: "Manchester",
+    town: "West Didsbury",
+    postcode: "M21 7QY",
+    address: "Manchester, M21 7QY",
+    roadFeatures: ["urban", "suburban"],
+    notes: "A mix of busier urban roads and quieter suburban streets typical of south Manchester."
+  },
+  {
+    id: "cheetham-hill",
+    name: "Cheetham Hill",
+    region: "Manchester",
+    town: "Cheetham Hill",
+    postcode: "M8 0AL",
+    address: "Alderglen Road, Cheetham, Manchester, M8 0AL",
+    roadFeatures: ["urban", "high-traffic"],
+    notes: "Close to Manchester city centre, so expect denser traffic and busier junctions."
+  },
+  {
+    id: "chadderton",
+    name: "Chadderton (Oldham)",
+    region: "Manchester",
+    town: "Oldham",
+    postcode: "OL9 9XA",
+    address: "9 Broadgate, Chadderton, Oldham, OL9 9XA",
+    roadFeatures: ["suburban", "roundabouts"],
+    notes: "Mostly suburban Oldham streets, with roundabouts feeding the surrounding main roads."
+  },
+  {
+    id: "bredbury",
+    name: "Bredbury (Stockport)",
+    region: "Manchester",
+    town: "Stockport",
+    postcode: "SK6 2QT",
+    address: "Lingard Lane, Bredbury, Stockport, SK6 2QT",
+    roadFeatures: ["hills", "roundabouts", "suburban"],
+    notes: "Stockport's terrain means some noticeably hilly roads, along with roundabouts and suburban streets."
+  }
+];
