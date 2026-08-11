@@ -1,0 +1,56 @@
+/* This app's colour tokens for both palettes — must come before any @import */
+@use "theme/variables.scss";
+
+/* Core Ionic CSS, required */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* Class-based dark palette hook (`.ion-palette-dark`) — driven by
+   ThemeService rather than the media-query-only `dark.system.css`, since
+   the app supports an explicit light/dark/system choice, not just
+   "always follow the OS". */
+@import "@ionic/angular/css/palettes/dark.class.css";
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--ion-background-color);
+}
+
+/* Small shared helpers used across pages */
+.ukdp-section-intro {
+  color: var(--ion-color-medium);
+  font-size: 0.92rem;
+  margin: 0 0 12px;
+}
+
+.ukdp-empty-state {
+  text-align: center;
+  color: var(--ion-color-medium);
+  padding: 32px 16px;
+}
+
+.ukdp-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

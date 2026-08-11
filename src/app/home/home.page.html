@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>UK Driving Licence Prep</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">UK Driving Licence Prep</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div style="padding: 4px 16px 0;">
+    <h1 style="font-size: 1.4rem; margin: 8px 0 2px;">{{ greeting() }}</h1>
+    <p class="ukdp-section-intro">Practice smart. Arrive confident.</p>
+  </div>
+
+  @if (theoryStats.hasAnyProgress()) {
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card class="ion-no-margin" style="margin: 8px; text-align: center;">
+            <ion-card-content>
+              <div style="font-size: 1.8rem; font-weight: 700; color: var(--ion-color-primary);">
+                {{ theoryStats.overallPct() }}%
+              </div>
+              <div style="color: var(--ion-color-medium); font-size: 0.85rem;">
+                theory accuracy &middot; {{ theoryStats.totalSeen() }} answered
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="ion-no-margin" style="margin: 8px; text-align: center;">
+            <ion-card-content>
+              @if (theoryStats.latestMockResult(); as last) {
+                <div style="font-size: 1.8rem; font-weight: 700; color: var(--ion-color-primary);">
+                  {{ last.score }}/{{ last.total }}
+                </div>
+                <div style="color: var(--ion-color-medium); font-size: 0.85rem;">
+                  last mock &middot; {{ last.pass ? 'PASS' : 'not yet (' + passMark + ' to pass)' }}
+                </div>
+              } @else {
+                <div style="font-size: 1.8rem; font-weight: 700; color: var(--ion-color-medium);">—</div>
+                <div style="color: var(--ion-color-medium); font-size: 0.85rem;">no mock test yet</div>
+              }
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  }
+
+  <ion-card button="true" routerLink="/tabs/study" style="margin: 8px 16px;">
+    <ion-card-header>
+      <ion-card-title style="display: flex; align-items: center; gap: 8px;">
+        <ion-icon aria-hidden="true" name="school-outline" color="primary"></ion-icon>
+        Study
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Read through theory questions and answers, learn the Show Me Tell Me
+      answers, work through the practical checklist ({{ checklistDone() }}/{{ checklistTotal() }} ready),
+      and see how hazard perception is actually scored.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" routerLink="/tabs/practice" style="margin: 8px 16px;">
+    <ion-card-header>
+      <ion-card-title style="display: flex; align-items: center; gap: 8px;">
+        <ion-icon aria-hidden="true" name="checkmark-done-circle-outline" color="primary"></ion-icon>
+        Practice
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Score yourself with a quick category quiz, or sit a full 50-question
+      timed mock test at the real {{ passMark }}/50 pass mark.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card button="true" routerLink="/tabs/centres" style="margin: 8px 16px;">
+    <ion-card-header>
+      <ion-card-title style="display: flex; align-items: center; gap: 8px;">
+        <ion-icon aria-hidden="true" name="location-outline" color="primary"></ion-icon>
+        Find a test centre
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Search and filter a sample of real DVSA test centres by town, postcode or region.
+    </ion-card-content>
+  </ion-card>
+
+  <div style="height: 16px;"></div>
+</ion-content>

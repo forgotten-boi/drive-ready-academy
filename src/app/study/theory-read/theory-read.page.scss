@@ -1,0 +1,52 @@
+.theory-read-answer {
+  padding: 4px 16px 16px;
+}
+
+.theory-read-options {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.theory-read-options li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--ion-color-light);
+  font-size: 0.9rem;
+}
+
+.theory-read-options li.is-correct {
+  background: color-mix(in srgb, var(--ion-color-success) 16%, var(--ion-card-background));
+  font-weight: 600;
+}
+
+.theory-read-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--ion-color-medium);
+  color: var(--ion-color-medium-contrast);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.theory-read-options li.is-correct .theory-read-letter {
+  background: var(--ion-color-success);
+  color: var(--ion-color-success-contrast);
+}
+
+.theory-read-explanation {
+  color: var(--ion-color-medium);
+  font-size: 0.88rem;
+  margin: 0;
+}

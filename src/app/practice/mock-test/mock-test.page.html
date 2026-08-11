@@ -1,0 +1,153 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/practice"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mock Test</ion-title>
+    @if (mockTest.isActive()) {
+      <ion-buttons slot="end">
+        <ion-button (click)="confirmAbandon()">Abandon</ion-button>
+      </ion-buttons>
+    }
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (!mockTest.attempt()) {
+    <!-- ===== Start screen ===== -->
+    @if (mockTest.autoSubmittedResult(); as auto) {
+      <ion-card class="mock-notice">
+        <ion-card-content>
+          Your last mock test ran out of time while the app was closed and was submitted
+          automatically — you scored {{ auto.score }}/{{ auto.total }}. See the Progress tab for the
+          full breakdown.
+        </ion-card-content>
+      </ion-card>
+    }
+
+    <ion-card>
+      <ion-card-content>
+        <p>
+          A full mock test draws <strong>{{ total }} random questions</strong> spread across all
+          categories, just like the real thing. You'll have <strong>{{ durationLabel }} minutes</strong>
+          — the same time limit as the real DVSA car theory test — and the real pass mark is
+          <strong>{{ passMark }} out of {{ total }}</strong>.
+        </p>
+        <p>
+          You can flag questions to revisit and jump between them freely before submitting. There's
+          no answer feedback during the test itself, just like on the day — but you'll get a full
+          review afterwards.
+        </p>
+        <ion-button expand="block" (click)="start()">Start mock test</ion-button>
+      </ion-card-content>
+    </ion-card>
+  } @else if (mockTest.isActive()) {
+    <!-- ===== Active test ===== -->
+    @if (mockTest.currentQuestion(); as q) {
+      @let attempt = mockTest.attempt()!;
+
+      <div class="mock-header">
+        <div class="mock-timer">{{ timerLabel() }}</div>
+        <div class="mock-meta">Question {{ attempt.currentIndex + 1 }} of {{ total }} &middot; {{ mockTest.answeredCount() }} answered</div>
+      </div>
+
+      <ion-card class="quiz-card">
+        <ion-card-content>
+          <div class="mock-flag-row">
+            <button type="button" class="mock-flag-btn" [attr.aria-pressed]="attempt.flagged.includes(q.id)" (click)="mockTest.toggleFlag(q.id)">
+              <ion-icon [name]="attempt.flagged.includes(q.id) ? 'flag' : 'flag-outline'" aria-hidden="true"></ion-icon>
+              {{ attempt.flagged.includes(q.id) ? 'Flagged' : 'Flag for review' }}
+            </button>
+          </div>
+
+          <p class="quiz-question">{{ q.question }}</p>
+
+          <div class="quiz-options" role="radiogroup" [attr.aria-label]="q.question">
+            @for (opt of q.options; track $index; let oi = $index) {
+              <label class="quiz-option" [class.is-selected]="attempt.answers[q.id] === oi">
+                <input type="radio" name="mock-answer" [checked]="attempt.answers[q.id] === oi" (change)="mockTest.selectAnswer(q.id, oi)" />
+                <span class="quiz-option__text">{{ opt }}</span>
+              </label>
+            }
+          </div>
+
+          <div class="mock-nav-buttons">
+            <ion-button fill="outline" [disabled]="attempt.currentIndex === 0" (click)="mockTest.previous()">Previous</ion-button>
+            <ion-button [disabled]="attempt.currentIndex === total - 1" (click)="mockTest.next()">Next</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <div class="mock-navigator">
+        @for (item of navigatorItems(); track item.id) {
+          <button
+            type="button"
+            class="mock-nav-btn"
+            [class.is-answered]="item.answered"
+            [class.is-flagged]="item.flagged"
+            [class.is-current]="item.current"
+            [attr.aria-current]="item.current ? 'true' : null"
+            [attr.aria-label]="'Question ' + (item.index + 1) + (item.answered ? ', answered' : ', not answered') + (item.flagged ? ', flagged' : '')"
+            (click)="mockTest.goTo(item.index)"
+          >
+            {{ item.index + 1 }}
+          </button>
+        }
+      </div>
+
+      <ion-button expand="block" color="secondary" (click)="trySubmit()" style="margin-top: 16px;">Submit test</ion-button>
+    }
+  } @else {
+    <!-- ===== Results ===== -->
+    @let result = mockTest.lastResult();
+
+    @if (result) {
+      <div class="mock-result">
+        <h1>{{ result.score }} / {{ result.total }}</h1>
+        <ion-badge [color]="result.pass ? 'success' : 'danger'">{{ result.pass ? 'PASS' : 'NOT YET' }}</ion-badge>
+        <p class="mock-result__gap">{{ gapMessage(result.score) }}</p>
+        <p class="mock-result__meta">Pass mark: {{ passMark }}/{{ total }} &middot; time used {{ timeUsedLabel() }}</p>
+      </div>
+
+      <ion-button expand="block" (click)="start()">Start a new mock test</ion-button>
+
+      <h2>Category breakdown</h2>
+      @for (row of breakdownRows(); track row.categoryId) {
+        <div class="breakdown-row">
+          <span class="breakdown-row__name">{{ row.name }}</span>
+          <ion-badge [color]="toneColor(row.pct)">{{ row.correct }}/{{ row.total }} &middot; {{ row.pct }}%</ion-badge>
+        </div>
+      }
+
+      <div class="review-toolbar">
+        <h2>Review answers</h2>
+        <label class="review-filter">
+          <ion-checkbox [checked]="reviewIncorrectOnly()" (ionChange)="reviewIncorrectOnly.set($event.detail.checked)"></ion-checkbox>
+          Incorrect / unanswered only
+        </label>
+      </div>
+
+      @for (item of reviewItems(); track item.index) {
+        <ion-card class="missed-item" [class.missed-item--correct]="item.wasCorrect">
+          <ion-card-content>
+            <p class="missed-item__q">
+              {{ item.index + 1 }}. {{ item.question.question }}
+              <span class="review-icon" aria-hidden="true">{{ item.wasCorrect ? '✓' : '✗' }}</span>
+            </p>
+            @if (item.given === undefined) {
+              <p class="missed-item__unanswered">You left this blank.</p>
+            } @else {
+              <p class="missed-item__a" [class.missed-item__wrong]="!item.wasCorrect">
+                Your answer: {{ item.question.options[item.given] }}
+              </p>
+            }
+            @if (!item.wasCorrect) {
+              <p class="missed-item__a">Correct answer: {{ item.question.options[item.question.correctIndex] }}</p>
+            }
+            <p class="missed-item__explain">{{ item.question.explanation }}</p>
+          </ion-card-content>
+        </ion-card>
+      }
+    }
+  }
+</ion-content>

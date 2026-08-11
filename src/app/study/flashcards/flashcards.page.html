@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/study"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Show Me, Tell Me</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (current(); as card) {
+    <p class="ukdp-section-intro">
+      One 'tell me' question is asked before you set off, one 'show me' question while driving.
+      Tap the card to reveal the answer.
+    </p>
+
+    <p class="flashcards-summary">
+      Card {{ index() + 1 }} of {{ deckOrder().length }} &middot;
+      {{ counts().known }} known &middot; {{ counts().learning }} still learning &middot;
+      {{ counts().notReviewed }} not yet reviewed
+    </p>
+
+    <ion-card class="flashcard">
+      <ion-card-content>
+        <ion-badge [color]="card.type === 'tell-me' ? 'warning' : 'success'">
+          {{ card.type === 'tell-me' ? 'Tell me' : 'Show me' }}
+        </ion-badge>
+
+        <p class="flashcard-question">{{ card.question }}</p>
+
+        <button
+          type="button"
+          class="flashcard-reveal-btn"
+          [attr.aria-expanded]="revealed()"
+          aria-controls="flashcard-answer"
+          (click)="reveal()"
+        >
+          {{ revealed() ? 'Hide answer' : 'Reveal answer' }}
+        </button>
+
+        <div id="flashcard-answer" class="flashcard-answer" [hidden]="!revealed()">
+          <p>{{ card.answer }}</p>
+          <div class="flashcard-rate-row">
+            <ion-button
+              fill="outline"
+              size="small"
+              [color]="currentRating() === 'learning' ? 'medium' : 'medium'"
+              [class.is-selected]="currentRating() === 'learning'"
+              (click)="rate('learning')"
+            >
+              Still learning
+            </ion-button>
+            <ion-button
+              fill="solid"
+              size="small"
+              color="secondary"
+              [class.is-selected]="currentRating() === 'known'"
+              (click)="rate('known')"
+            >
+              Got it
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="flashcard-nav">
+      <ion-button fill="clear" (click)="previous()" aria-label="Previous card">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="shuffleDeck()">
+        <ion-icon slot="start" name="shuffle-outline"></ion-icon>
+        Shuffle
+      </ion-button>
+      <ion-button fill="clear" (click)="next()" aria-label="Next card">
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="ion-text-center">
+      <ion-button fill="clear" color="medium" size="small" (click)="confirmReset()">Reset ratings</ion-button>
+    </div>
+  } @else {
+    <div class="ukdp-empty-state">
+      <p>Loading flashcards…</p>
+    </div>
+  }
+</ion-content>

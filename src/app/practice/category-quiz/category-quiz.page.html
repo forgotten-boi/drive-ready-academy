@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/practice/quiz"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ categoryName() }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (!finished() && current(); as q) {
+    <p class="quiz-progress">{{ categoryName() }} &middot; Question {{ index() + 1 }} of {{ sessionQuestions().length }}</p>
+
+    <ion-card class="quiz-card">
+      <ion-card-content>
+        <p class="quiz-question">{{ q.question }}</p>
+
+        <div class="quiz-options" role="radiogroup" [attr.aria-label]="q.question">
+          @for (opt of q.options; track $index; let oi = $index) {
+            <label
+              class="quiz-option"
+              [class.is-selected]="selected() === oi && !checked()"
+              [class.is-correct]="checked() && oi === q.correctIndex"
+              [class.is-incorrect]="checked() && selected() === oi && oi !== q.correctIndex"
+            >
+              <input
+                type="radio"
+                name="quiz-answer"
+                [checked]="selected() === oi"
+                [disabled]="checked()"
+                (change)="select(oi)"
+              />
+              <span class="quiz-option__text">{{ opt }}</span>
+              @if (checked() && oi === q.correctIndex) {
+                <span class="quiz-option__marker" aria-hidden="true">&#10003;</span>
+              } @else if (checked() && selected() === oi) {
+                <span class="quiz-option__marker" aria-hidden="true">&#10007;</span>
+              }
+            </label>
+          }
+        </div>
+
+        @if (checked()) {
+          <div class="quiz-explanation">
+            <p class="quiz-explanation__result">{{ selected() === q.correctIndex ? 'Correct.' : 'Not quite.' }}</p>
+            <p>{{ q.explanation }}</p>
+          </div>
+        }
+
+        <div class="quiz-actions">
+          @if (!checked()) {
+            <ion-button expand="block" [disabled]="selected() === null" (click)="check()">Check answer</ion-button>
+          } @else {
+            <ion-button expand="block" (click)="next()">{{ isLast() ? 'See results' : 'Next question' }}</ion-button>
+          }
+        </div>
+      </ion-card-content>
+    </ion-card>
+  } @else if (finished()) {
+    <div class="quiz-result">
+      <h1>{{ score() }} / {{ sessionQuestions().length }}</h1>
+      <ion-badge [color]="toneColor(pct())">{{ pct() }}%</ion-badge>
+      <p class="quiz-result__category">{{ categoryName() }}</p>
+    </div>
+
+    <div class="quiz-result-actions">
+      <ion-button expand="block" (click)="startSession()">Practice this category again</ion-button>
+      <ion-button expand="block" fill="outline" (click)="backToCategories()">Back to categories</ion-button>
+    </div>
+
+    @if (missed().length === 0) {
+      <p class="ukdp-empty-state">Nice work — you got every question right in this set.</p>
+    } @else {
+      <h2>Questions to review</h2>
+      @for (q of missed(); track q.id) {
+        <ion-card class="missed-item">
+          <ion-card-content>
+            <p class="missed-item__q">{{ q.question }}</p>
+            <p class="missed-item__a"><strong>Correct answer:</strong> {{ q.options[q.correctIndex] }}</p>
+            <p class="missed-item__explain">{{ q.explanation }}</p>
+          </ion-card-content>
+        </ion-card>
+      }
+    }
+  } @else {
+    <div class="ukdp-empty-state">
+      <p>Loading questions…</p>
+    </div>
+  }
+</ion-content>

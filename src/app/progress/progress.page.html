@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Progress</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list inset="true">
+    <ion-list-header><ion-label>Appearance</ion-label></ion-list-header>
+    <ion-item lines="none">
+      <ion-segment [value]="theme.mode()" (ionChange)="onThemeChange($event.detail.value)">
+        <ion-segment-button value="light">
+          <ion-icon name="sunny-outline"></ion-icon>
+          <ion-label>Light</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="dark">
+          <ion-icon name="moon-outline"></ion-icon>
+          <ion-label>Dark</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="system">
+          <ion-icon name="phone-portrait-outline"></ion-icon>
+          <ion-label>System</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-item>
+  </ion-list>
+
+  <p class="ukdp-section-intro" style="padding: 4px 4px 0;">
+    Progress is saved on this device only — nothing is sent anywhere.
+  </p>
+
+  @if (!theoryStats.hasAnyProgress()) {
+    <div class="ukdp-empty-state">
+      <p>
+        No theory progress yet. Try a category in <strong>Study &rsaquo; Theory Categories</strong>
+        or take a <strong>Mock Test</strong> in Practice.
+      </p>
+    </div>
+  } @else {
+    <ion-list inset="true">
+      <ion-list-header><ion-label>Overall theory accuracy</ion-label></ion-list-header>
+      <ion-item lines="none">
+        <ion-label>
+          <h1 style="font-size: 1.8rem; font-weight: 700; color: var(--ion-color-primary);">
+            {{ theoryStats.overallPct() }}%
+          </h1>
+          <p>{{ theoryStats.totalCorrect() }} correct out of {{ theoryStats.totalSeen() }} answered</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list inset="true">
+      <ion-list-header><ion-label>Category breakdown &mdash; weakest first</ion-label></ion-list-header>
+      @for (row of categoryRows(); track row.id) {
+        <ion-item lines="full">
+          <ion-label class="ion-text-wrap">
+            <h3>{{ row.name }}</h3>
+            @if (row.pct !== null) {
+              <ion-progress-bar [value]="row.pct / 100" [color]="toneColor(row.pct)"></ion-progress-bar>
+            }
+          </ion-label>
+          @if (row.pct !== null) {
+            <ion-badge slot="end" [color]="toneColor(row.pct)">{{ row.pct }}%</ion-badge>
+          } @else {
+            <ion-badge slot="end" color="medium">—</ion-badge>
+          }
+        </ion-item>
+      }
+    </ion-list>
+
+    <ion-list inset="true">
+      <ion-list-header><ion-label>Mock test history</ion-label></ion-list-header>
+      @if (mockHistoryDesc().length === 0) {
+        <ion-item lines="none"><ion-label>No mock tests completed yet.</ion-label></ion-item>
+      } @else {
+        @for (h of mockHistoryDesc(); track h.date) {
+          <ion-item lines="full">
+            <ion-label class="ion-text-wrap">
+              <h3>{{ h.score }} / {{ h.total }}</h3>
+              <p>{{ formatDate(h.date) }}</p>
+            </ion-label>
+            <ion-badge slot="end" [color]="h.pass ? 'success' : 'danger'">{{ h.pass ? 'PASS' : 'NOT YET' }}</ion-badge>
+          </ion-item>
+        }
+      }
+    </ion-list>
+  }
+
+  <div class="ion-text-center" style="padding: 16px;">
+    <ion-button fill="outline" color="medium" (click)="confirmResetProgress()">Reset theory progress</ion-button>
+    <ion-button fill="clear" color="danger" (click)="confirmResetEverything()">Reset everything</ion-button>
+  </div>
+</ion-content>

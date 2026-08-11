@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/study/theory-categories"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ categoryName() }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ categoryName() }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <p class="ukdp-section-intro" style="padding: 8px 16px 0;">
+    Tap a question to reveal the answer and why. No score, no timer.
+  </p>
+
+  <ion-accordion-group>
+    @for (q of questions(); track q.id; let i = $index) {
+      <ion-accordion [value]="q.id">
+        <ion-item slot="header">
+          <ion-label class="ion-text-wrap">{{ i + 1 }}. {{ q.question }}</ion-label>
+        </ion-item>
+        <div slot="content" class="theory-read-answer">
+          <ul class="theory-read-options">
+            @for (opt of q.options; track $index; let oi = $index) {
+              <li [class.is-correct]="oi === q.correctIndex">
+                <span class="theory-read-letter">{{ optionLetter(oi) }}</span>
+                {{ opt }}
+                @if (oi === q.correctIndex) {
+                  <ion-badge color="success">Correct</ion-badge>
+                }
+              </li>
+            }
+          </ul>
+          <p class="theory-read-explanation">{{ q.explanation }}</p>
+        </div>
+      </ion-accordion>
+    }
+  </ion-accordion-group>
+
+  <div style="height: 16px;"></div>
+</ion-content>
