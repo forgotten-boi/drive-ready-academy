@@ -661,6 +661,73 @@ h2[tabindex="-1"]:focus, legend[tabindex="-1"]:focus {
   .mock-header { position: static; }
 }
 
+/* ---------- My Progress dashboard ---------- */
+
+.storage-notice {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.9rem;
+  max-width: 640px;
+  margin-bottom: 1.25rem;
+}
+
+.overall-summary { max-width: 640px; text-align: center; margin-bottom: 1.5rem; }
+
+.overall-summary__figure {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.overall-summary__meta { color: var(--color-text-muted); }
+
+.progress-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 640px;
+  margin-bottom: 1.75rem;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.1rem;
+}
+
+.progress-row__name { flex: 0 0 auto; width: 13rem; max-width: 45%; margin: 0; font-size: 0.95rem; }
+.progress-row .progress-bar { flex: 1; }
+.progress-row .badge { flex: 0 0 auto; white-space: nowrap; }
+
+.history-list { display: flex; flex-direction: column; gap: 0.6rem; max-width: 640px; margin-bottom: 1.5rem; }
+
+.history-item__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.history-item__date { font-weight: 600; color: var(--color-text-muted); font-size: 0.88rem; }
+.history-item__score { font-size: 1.2rem; font-weight: 700; color: var(--color-primary-dark); margin-bottom: 0.15rem; }
+.history-item__pct { font-weight: 500; color: var(--color-text-muted); font-size: 0.9rem; }
+.history-item__time { color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 0; }
+
+@media (max-width: 520px) {
+  .progress-row { flex-wrap: wrap; }
+  .progress-row__name { width: 100%; max-width: 100%; }
+  .progress-row .progress-bar { flex-basis: 100%; order: 3; }
+}
+
 /* ---------- Footer ---------- */
 
 .app-footer {
