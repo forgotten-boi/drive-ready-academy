@@ -178,11 +178,9 @@
 }
 
 .review-filter {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 0.85rem;
   color: var(--ion-color-medium);
+  --gap: 6px;
 }
 
 .missed-item {

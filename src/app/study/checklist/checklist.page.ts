@@ -17,6 +17,7 @@ import {
 } from '@ionic/angular/standalone';
 import { PracticalDataService } from '../../core/services/practical-data.service';
 import { PracticalStateService } from '../../core/services/practical-state.service';
+import { HapticsService } from '../../core/services/haptics.service';
 
 @Component({
   selector: 'app-checklist',
@@ -33,12 +34,13 @@ import { PracticalStateService } from '../../core/services/practical-state.servi
     IonItem,
     IonLabel,
     IonCheckbox,
-      IonProgressBar,
+    IonProgressBar,
     IonButton
   ]
 })
 export class ChecklistPage {
   private readonly alertController = inject(AlertController);
+  private readonly haptics = inject(HapticsService);
 
   readonly data = inject(PracticalDataService);
   readonly state = inject(PracticalStateService);
@@ -53,6 +55,7 @@ export class ChecklistPage {
 
   toggle(id: string, checked: boolean): void {
     this.state.setChecklistItem(id, checked);
+    void this.haptics.selection();
   }
 
   async confirmReset(): Promise<void> {

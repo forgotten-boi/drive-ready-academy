@@ -14,6 +14,7 @@ import {
 } from '@ionic/angular/standalone';
 import { TheoryDataService } from '../../core/services/theory-data.service';
 import { TheoryStatsService } from '../../core/services/theory-stats.service';
+import { HapticsService } from '../../core/services/haptics.service';
 import { TheoryQuestion } from '../../core/models/theory.model';
 import { sample, toneColor } from '../../core/utils';
 
@@ -41,6 +42,7 @@ export class CategoryQuizPage {
   private readonly router = inject(Router);
   private readonly theoryData = inject(TheoryDataService);
   private readonly theoryStats = inject(TheoryStatsService);
+  private readonly haptics = inject(HapticsService);
 
   readonly toneColor = toneColor;
 
@@ -101,8 +103,13 @@ export class CategoryQuizPage {
 
     this.checked.set(true);
     const wasCorrect = sel === q.correctIndex;
-    if (wasCorrect) this.score.update((s) => s + 1);
-    else this.missed.update((m) => [...m, q]);
+    if (wasCorrect) {
+      this.score.update((s) => s + 1);
+      void this.haptics.success();
+    } else {
+      this.missed.update((m) => [...m, q]);
+      void this.haptics.error();
+    }
 
     this.theoryStats.recordAnswer(q.category, wasCorrect);
   }

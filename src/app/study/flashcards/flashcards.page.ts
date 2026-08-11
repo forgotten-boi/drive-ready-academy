@@ -17,6 +17,7 @@ import { addIcons } from 'ionicons';
 import { shuffleOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { PracticalDataService } from '../../core/services/practical-data.service';
 import { PracticalStateService } from '../../core/services/practical-state.service';
+import { HapticsService } from '../../core/services/haptics.service';
 import { shuffle } from '../../core/utils';
 import { FlashcardRating } from '../../core/models/practical.model';
 
@@ -46,6 +47,7 @@ addIcons({
 })
 export class FlashcardsPage {
   private readonly alertController = inject(AlertController);
+  private readonly haptics = inject(HapticsService);
 
   readonly data = inject(PracticalDataService);
   readonly state = inject(PracticalStateService);
@@ -98,6 +100,7 @@ export class FlashcardsPage {
     const card = this.current();
     if (!card) return;
     this.state.rateFlashcard(card.id, rating);
+    void this.haptics.selection();
     this.next();
   }
 
