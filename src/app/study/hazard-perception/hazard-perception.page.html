@@ -1,0 +1,206 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/study"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Hazard Perception</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Hazard Perception</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="hazard-intro">
+    <ion-card-content>
+      <p>
+        <strong>A quick note on what this is (and isn't):</strong> the real DVSA hazard perception
+        test uses video clips, which isn't something this app can generate. What follows is a
+        written and diagram-based guide to the underlying skill the test measures — spotting a
+        developing situation early — plus what to expect on the day. For actual clip practice, use
+        the official practice materials on
+        <a href="https://www.gov.uk/hazard-perception-test" target="_blank" rel="noopener">gov.uk</a>.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>How the real test works</h2>
+  <ion-card>
+    <ion-card-content>
+      <p>
+        You're shown video clips filmed from a car's point of view, and you click or tap as soon as
+        you spot a <strong>developing hazard</strong> — something that would make a competent driver
+        need to take action. The earlier you spot it within the scoring window, the higher your mark;
+        react too late and you may score nothing for it.
+      </p>
+      <p>
+        There are usually 14 clips, one of which typically contains two separate developing hazards,
+        giving 15 scoring opportunities. The pass mark has generally been around 44 out of a possible
+        75 — but formats and pass marks can change, so check the current details on gov.uk rather than
+        relying on this figure.
+      </p>
+      <p>
+        <strong>One important trap:</strong> the system is designed to catch clicking repeatedly or
+        rhythmically to try to "cover" every possible hazard — this can zero your score for that clip
+        even with otherwise good timing. Watch genuinely, and click when you actually see something
+        developing.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Developing hazard vs potential hazard</h2>
+  <ion-card>
+    <ion-card-content>
+      <p>
+        A <strong>potential hazard</strong> could turn into a problem but hasn't started to yet — a
+        ball lying still on a pavement, a pedestrian standing at the kerb but not moving.
+      </p>
+      <p>
+        A <strong>developing hazard</strong> is the same situation once it starts to actually affect
+        your driving — the ball starts rolling into the road, the pedestrian steps off the kerb. This
+        is the moment the real test scores: not "is there anything here", but "has this started to
+        require a response".
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Worked example: a residential street</h2>
+  <ion-card>
+    <ion-card-content>
+      <svg class="hazard-svg" viewBox="0 0 400 200" role="img" aria-labelledby="hz1-title hz1-desc">
+        <title id="hz1-title">A residential street with parked cars</title>
+        <desc id="hz1-desc">
+          Parked cars line the left kerb with a gap between two of them. A ball sits near the gap. A
+          car further down the road shows its brake lights.
+        </desc>
+        <rect class="hazard-svg__sky" x="0" y="0" width="400" height="200" />
+        <rect class="hazard-svg__pavement" x="0" y="70" width="400" height="30" />
+        <rect class="hazard-svg__road" x="0" y="100" width="400" height="100" />
+        <line class="hazard-svg__roadline" x1="0" y1="150" x2="400" y2="150" />
+        <g>
+          <rect class="hazard-svg__car" x="20" y="95" width="55" height="26" rx="4" />
+          <circle class="hazard-svg__wheel" cx="34" cy="121" r="6" />
+          <circle class="hazard-svg__wheel" cx="64" cy="121" r="6" />
+        </g>
+        <g>
+          <rect class="hazard-svg__car" x="90" y="95" width="55" height="26" rx="4" />
+          <circle class="hazard-svg__wheel" cx="104" cy="121" r="6" />
+          <circle class="hazard-svg__wheel" cx="134" cy="121" r="6" />
+        </g>
+        <circle class="hazard-svg__ball" cx="178" cy="118" r="7" />
+        <g>
+          <rect class="hazard-svg__car" x="215" y="95" width="55" height="26" rx="4" />
+          <circle class="hazard-svg__wheel" cx="229" cy="121" r="6" />
+          <circle class="hazard-svg__wheel" cx="259" cy="121" r="6" />
+        </g>
+        <g>
+          <rect class="hazard-svg__car hazard-svg__car--lead" x="320" y="100" width="40" height="20" rx="3" />
+          <rect class="hazard-svg__brakelight" x="317" y="104" width="4" height="10" />
+          <circle class="hazard-svg__wheel" cx="330" cy="120" r="5" />
+          <circle class="hazard-svg__wheel" cx="352" cy="120" r="5" />
+        </g>
+        <g class="hazard-svg__marker" transform="translate(178,80)"><circle r="11" /><text y="4">1</text></g>
+        <g class="hazard-svg__marker" transform="translate(178,140)"><circle r="11" /><text y="4">2</text></g>
+        <g class="hazard-svg__marker" transform="translate(340,80)"><circle r="11" /><text y="4">3</text></g>
+      </svg>
+
+      <ol class="hazard-callout-list">
+        <li>
+          <strong>Gap between parked cars.</strong> A common place for a pedestrian, especially a
+          child, to step out without warning. Worth covering the brake and easing off before you
+          draw level with it.
+        </li>
+        <li>
+          <strong>A ball near the gap.</strong> On its own it's only a potential hazard. If it starts
+          moving, or you spot the child likely to follow it, that's when it becomes a developing
+          hazard.
+        </li>
+        <li>
+          <strong>Brake lights on a car further ahead.</strong> A clue that something up there is
+          slowing traffic — start easing off in anticipation rather than waiting for the car directly
+          ahead to react first.
+        </li>
+      </ol>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Worked example: a side junction</h2>
+  <ion-card>
+    <ion-card-content>
+      <svg class="hazard-svg" viewBox="0 0 400 220" role="img" aria-labelledby="hz2-title hz2-desc">
+        <title id="hz2-title">A side junction with a car waiting to pull out and a cyclist approaching</title>
+        <desc id="hz2-desc">
+          You are travelling along a main road. A car waits at a give-way line on a side road to your
+          left, its front just visible. A cyclist is on the main road ahead of you, closer to the
+          junction than the car.
+        </desc>
+        <rect class="hazard-svg__sky" x="0" y="0" width="400" height="220" />
+        <rect class="hazard-svg__road" x="0" y="120" width="400" height="70" />
+        <rect class="hazard-svg__road" x="60" y="120" width="70" height="100" />
+        <line class="hazard-svg__roadline hazard-svg__roadline--dashed" x1="0" y1="155" x2="400" y2="155" />
+        <line class="hazard-svg__giveway" x1="130" y1="120" x2="130" y2="188" />
+        <g>
+          <rect class="hazard-svg__car" x="95" y="128" width="40" height="24" rx="4" />
+          <circle class="hazard-svg__wheel" cx="108" cy="152" r="5" />
+          <circle class="hazard-svg__wheel" cx="128" cy="152" r="5" />
+        </g>
+        <g transform="translate(260,150)">
+          <circle class="hazard-svg__wheel" cx="-10" cy="14" r="9" />
+          <circle class="hazard-svg__wheel" cx="16" cy="14" r="9" />
+          <path class="hazard-svg__bikeframe" d="M -10 14 L 4 -4 L 16 14 M 4 -4 L 0 -14 M -6 -14 L 8 -14" />
+          <circle class="hazard-svg__rider" cx="0" cy="-18" r="6" />
+        </g>
+        <g class="hazard-svg__marker" transform="translate(115,110)"><circle r="11" /><text y="4">1</text></g>
+        <g class="hazard-svg__marker" transform="translate(266,120)"><circle r="11" /><text y="4">2</text></g>
+        <g class="hazard-svg__marker" transform="translate(360,140)"><circle r="11" /><text y="4">3</text></g>
+      </svg>
+
+      <ol class="hazard-callout-list">
+        <li>
+          <strong>A car waiting at the give-way line.</strong> Its front is just visible past the
+          line. It may already be looking for a gap in traffic — including the gap right where you
+          are.
+        </li>
+        <li>
+          <strong>A cyclist on your road, closer to the junction than the waiting car.</strong> A
+          driver pulling out might see your car but misjudge the cyclist's speed or miss them
+          entirely — a classic cause of junction collisions.
+        </li>
+        <li>
+          <strong>Your own position and speed.</strong> With two things to track at once, easing off
+          slightly and covering the brake gives you time to react to whichever one actually moves.
+        </li>
+      </ol>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Scanning technique</h2>
+  <ion-card>
+    <ion-card-content>
+      <ul class="hazard-tips">
+        <li>Keep your eyes moving — near, far, side to side — rather than fixing on one point.</li>
+        <li>Look well beyond the vehicle directly ahead, towards the next junction or brake lights further down the road.</li>
+        <li>Check both sides of the road, not just the direction you expect a hazard from.</li>
+        <li>Pay particular attention around junctions, parked vehicles, bus stops, crossings and schools.</li>
+        <li>In poor visibility, you'll see hazards later than usual — slow down accordingly.</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Common mistakes</h2>
+  <ion-card>
+    <ion-card-content>
+      <ul class="hazard-tips">
+        <li>Clicking repeatedly or rhythmically to try to "cover" every possibility — this can zero your score.</li>
+        <li>Reacting to the first obvious hazard and missing a second, quieter one developing elsewhere.</li>
+        <li>Tunnel vision under pressure — narrowing attention to directly ahead and missing hazards from the sides.</li>
+        <li>Waiting for total certainty before reacting, instead of responding as a situation starts to develop.</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <div style="height: 16px;"></div>
+</ion-content>

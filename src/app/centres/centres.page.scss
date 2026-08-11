@@ -1,0 +1,53 @@
+.centres-disclaimer {
+  margin: 8px 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--app-accent-soft);
+}
+
+.centres-disclaimer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ion-color-medium);
+}
+
+.centres-region-row {
+  padding: 0 16px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.centres-count {
+  font-size: 0.85rem;
+  color: var(--ion-color-medium);
+  font-weight: 600;
+  margin: 4px 0 0;
+}
+
+.centre-card {
+  margin: 8px 16px;
+}
+
+.centre-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.centre-card__address {
+  color: var(--ion-color-medium);
+  font-size: 0.9rem;
+  margin: 0 0 8px;
+}
+
+.centre-tag {
+  --background: var(--app-accent-soft);
+  --color: var(--ion-color-primary);
+}
+
+.centre-card__notes {
+  font-size: 0.88rem;
+  margin: 8px 0 0;
+}

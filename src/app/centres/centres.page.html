@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Centre Finder</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="Search town, postcode or name"
+      [debounce]="150"
+      (ionInput)="onSearch($event.detail.value)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Centre Finder</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="centres-disclaimer">
+    <p>
+      <strong>About this data:</strong> centre names and addresses are a small starting sample from
+      public sources, not DVSA's live booking system — confirm details and availability on
+      <a href="https://www.gov.uk/find-driving-test-centre" target="_blank" rel="noopener">gov.uk</a>
+      before booking. The road-type notes are this app's own general impression of each area, not
+      official DVSA routes.
+    </p>
+  </div>
+
+  <div class="centres-region-row">
+    <ion-select
+      label="Region"
+      labelPlacement="stacked"
+      interface="popover"
+      [value]="region()"
+      (ionChange)="onRegionChange($event.detail.value)"
+    >
+      <ion-select-option value="all">All regions</ion-select-option>
+      @for (r of data.regions(); track r) {
+        <ion-select-option [value]="r">{{ r }}</ion-select-option>
+      }
+    </ion-select>
+    <p class="centres-count">{{ filtered().length }} centre{{ filtered().length === 1 ? '' : 's' }} found</p>
+  </div>
+
+  @if (filtered().length === 0) {
+    <div class="ukdp-empty-state">
+      <p>No centres match your search. Try a different town, postcode, or region.</p>
+    </div>
+  } @else {
+    @for (centre of filtered(); track centre.id) {
+      <ion-card class="centre-card">
+        <ion-card-header>
+          <div class="centre-card__header">
+            <ion-card-title>{{ centre.name }}</ion-card-title>
+            <ion-badge color="tertiary">{{ centre.region }}</ion-badge>
+          </div>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="centre-card__address">{{ centre.address }}</p>
+          <div class="ukdp-badge-row">
+            @for (tag of centre.roadFeatures; track tag) {
+              <ion-badge color="light" class="centre-tag">{{ featureLabel(tag) }}</ion-badge>
+            }
+          </div>
+          <p class="centre-card__notes">{{ centre.notes }}</p>
+        </ion-card-content>
+      </ion-card>
+    }
+  }
+
+  <div style="height: 16px;"></div>
+</ion-content>

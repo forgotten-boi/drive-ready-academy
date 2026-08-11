@@ -1,0 +1,72 @@
+.flashcards-summary {
+  font-size: 0.85rem;
+  color: var(--ion-color-medium);
+  font-weight: 600;
+}
+
+.flashcard {
+  text-align: center;
+}
+
+.flashcard-question {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ion-color-dark);
+  margin: 12px 0 16px;
+}
+
+.flashcard-reveal-btn {
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flashcard-answer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--ion-border-color);
+  text-align: left;
+  animation: flashcard-reveal 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flashcard-answer {
+    animation: none;
+  }
+}
+
+@keyframes flashcard-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flashcard-rate-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.is-selected {
+  --border-width: 2px;
+}
+
+.flashcard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 12px;
+}
