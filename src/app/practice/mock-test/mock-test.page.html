@@ -121,10 +121,14 @@
 
       <div class="review-toolbar">
         <h2>Review answers</h2>
-        <label class="review-filter">
-          <ion-checkbox [checked]="reviewIncorrectOnly()" (ionChange)="reviewIncorrectOnly.set($event.detail.checked)"></ion-checkbox>
+        <ion-checkbox
+          class="review-filter"
+          justify="start"
+          [checked]="reviewIncorrectOnly()"
+          (ionChange)="reviewIncorrectOnly.set($event.detail.checked)"
+        >
           Incorrect / unanswered only
-        </label>
+        </ion-checkbox>
       </div>
 
       @for (item of reviewItems(); track item.index) {
