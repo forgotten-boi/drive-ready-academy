@@ -982,7 +982,7 @@ h2[tabindex="-1"]:focus, legend[tabindex="-1"]:focus {
 
 @media (max-width: 640px) {
   .app-header__brand h1 { font-size: 1.15rem; }
-  .tab-bar__btn { flex: 1; text-align: center; padding: 0.7rem 0.5rem; font-size: 0.85rem; }
+  .tab-bar__btn { flex: 1; min-width: 0; text-align: center; padding: 0.7rem 0.5rem; font-size: 0.85rem; white-space: normal; }
   .tab-bar__icon { display: block; margin: 0 0 0.15rem; }
   .app-main { padding: 1.1rem 0.85rem 2.25rem; }
   .card { padding: 1rem; }
