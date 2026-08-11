@@ -1,0 +1,177 @@
+/* ==========================================================================
+   UK Driving Licence Prep — Ionic theme
+   Calm blue/green palette, carried over from the web app's design system,
+   with a matching dark palette. Dark mode is applied via the
+   `.ion-palette-dark` class on <html>, driven by ThemeService — see
+   src/styles.scss for the `dark.class.css` import that makes this class
+   meaningful to Ionic's own components.
+   ========================================================================== */
+
+:root {
+  /* -------- Brand colours (light) -------- */
+  --ion-color-primary: #1f5f74;
+  --ion-color-primary-rgb: 31, 95, 116;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #133e4c;
+  --ion-color-primary-tint: #3f8f9e;
+
+  --ion-color-secondary: #4fa585;
+  --ion-color-secondary-rgb: 79, 165, 133;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #3d8a6e;
+  --ion-color-secondary-tint: #6ab89b;
+
+  --ion-color-tertiary: #3f8f9e;
+  --ion-color-tertiary-rgb: 63, 143, 158;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #1f5f74;
+  --ion-color-tertiary-tint: #62a7b4;
+
+  --ion-color-success: #2f9e63;
+  --ion-color-success-rgb: 47, 158, 99;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #278552;
+  --ion-color-success-tint: #4aad79;
+
+  --ion-color-warning: #c98a2e;
+  --ion-color-warning-rgb: 201, 138, 46;
+  --ion-color-warning-contrast: #1c2b2f;
+  --ion-color-warning-contrast-rgb: 28, 43, 47;
+  --ion-color-warning-shade: #ad7526;
+  --ion-color-warning-tint: #d29a49;
+
+  --ion-color-danger: #c1585c;
+  --ion-color-danger-rgb: 193, 88, 92;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #a44b4f;
+  --ion-color-danger-tint: #c96f72;
+
+  --ion-color-dark: #133e4c;
+  --ion-color-dark-rgb: 19, 62, 76;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #102f39;
+  --ion-color-dark-tint: #2f5866;
+
+  --ion-color-medium: #5c7075;
+  --ion-color-medium-rgb: 92, 112, 117;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #4d5e62;
+  --ion-color-medium-tint: #77898d;
+
+  --ion-color-light: #eaf3f2;
+  --ion-color-light-rgb: 234, 243, 242;
+  --ion-color-light-contrast: #1c2b2f;
+  --ion-color-light-contrast-rgb: 28, 43, 47;
+  --ion-color-light-shade: #cfd8d7;
+  --ion-color-light-tint: #eef5f4;
+
+  /* -------- Surfaces (light) -------- */
+  --ion-background-color: #f2f7f7;
+  --ion-background-color-rgb: 242, 247, 247;
+  --ion-text-color: #1c2b2f;
+  --ion-text-color-rgb: 28, 43, 47;
+
+  --ion-toolbar-background: #1f5f74;
+  --ion-toolbar-color: #ffffff;
+  --ion-tab-bar-background: #ffffff;
+  --ion-tab-bar-color: #5c7075;
+  --ion-tab-bar-color-selected: #1f5f74;
+
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  --ion-border-color: #d7e4e3;
+
+  --app-accent-soft: #d9efe6;
+  --app-shadow: 0 2px 10px rgba(19, 62, 76, 0.08);
+}
+
+/* -------- Dark palette, applied via ThemeService toggling this class -------- */
+:root.ion-palette-dark {
+  --ion-color-primary: #5fb3c4;
+  --ion-color-primary-rgb: 95, 179, 196;
+  --ion-color-primary-contrast: #0a1416;
+  --ion-color-primary-contrast-rgb: 10, 20, 22;
+  --ion-color-primary-shade: #4a97a6;
+  --ion-color-primary-tint: #7bc0cf;
+
+  --ion-color-secondary: #63c79f;
+  --ion-color-secondary-rgb: 99, 199, 159;
+  --ion-color-secondary-contrast: #0a1416;
+  --ion-color-secondary-contrast-rgb: 10, 20, 22;
+  --ion-color-secondary-shade: #4fae87;
+  --ion-color-secondary-tint: #82d1b1;
+
+  --ion-color-tertiary: #7bc0cf;
+  --ion-color-tertiary-rgb: 123, 192, 207;
+  --ion-color-tertiary-contrast: #0a1416;
+  --ion-color-tertiary-contrast-rgb: 10, 20, 22;
+  --ion-color-tertiary-shade: #5fb3c4;
+  --ion-color-tertiary-tint: #97cfda;
+
+  --ion-color-success: #4cbf82;
+  --ion-color-success-rgb: 76, 191, 130;
+  --ion-color-success-contrast: #0a1416;
+  --ion-color-success-contrast-rgb: 10, 20, 22;
+  --ion-color-success-shade: #3fa06d;
+  --ion-color-success-tint: #6bcb98;
+
+  --ion-color-warning: #e0a94f;
+  --ion-color-warning-rgb: 224, 169, 79;
+  --ion-color-warning-contrast: #0a1416;
+  --ion-color-warning-contrast-rgb: 10, 20, 22;
+  --ion-color-warning-shade: #c6913f;
+  --ion-color-warning-tint: #e6ba6b;
+
+  --ion-color-danger: #e08084;
+  --ion-color-danger-rgb: 224, 128, 132;
+  --ion-color-danger-contrast: #0a1416;
+  --ion-color-danger-contrast-rgb: 10, 20, 22;
+  --ion-color-danger-shade: #c76d71;
+  --ion-color-danger-tint: #e6969a;
+
+  --ion-color-dark: #eef5f4;
+  --ion-color-dark-rgb: 238, 245, 244;
+  --ion-color-dark-contrast: #0a1416;
+  --ion-color-dark-contrast-rgb: 10, 20, 22;
+  --ion-color-dark-shade: #d1d8d7;
+  --ion-color-dark-tint: #f1f7f6;
+
+  --ion-color-medium: #9fb2b5;
+  --ion-color-medium-rgb: 159, 178, 181;
+  --ion-color-medium-contrast: #0a1416;
+  --ion-color-medium-contrast-rgb: 10, 20, 22;
+  --ion-color-medium-shade: #8c9ea1;
+  --ion-color-medium-tint: #a9bbbe;
+
+  --ion-color-light: #182428;
+  --ion-color-light-rgb: 24, 36, 40;
+  --ion-color-light-contrast: #eef5f4;
+  --ion-color-light-contrast-rgb: 238, 245, 244;
+  --ion-color-light-shade: #15201f;
+  --ion-color-light-tint: #2a3a3e;
+
+  --ion-background-color: #0f1a1c;
+  --ion-background-color-rgb: 15, 26, 28;
+  --ion-text-color: #eef5f4;
+  --ion-text-color-rgb: 238, 245, 244;
+
+  --ion-toolbar-background: #142226;
+  --ion-toolbar-color: #eef5f4;
+  --ion-tab-bar-background: #142226;
+  --ion-tab-bar-color: #9fb2b5;
+  --ion-tab-bar-color-selected: #5fb3c4;
+
+  --ion-item-background: #182428;
+  --ion-card-background: #182428;
+  --ion-border-color: #2a3a3e;
+
+  --app-accent-soft: #1c332d;
+  --app-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}

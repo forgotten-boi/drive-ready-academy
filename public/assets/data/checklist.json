@@ -1,0 +1,91 @@
+[
+  {
+    "id": "before-you-arrive",
+    "section": "Before you arrive",
+    "items": [
+      {
+        "id": "bring-licence",
+        "text": "Bring your valid provisional (or full) driving licence photocard",
+        "note": "Without it, the test usually can't go ahead, even if the rest of your paperwork is in order."
+      },
+      {
+        "id": "bring-glasses",
+        "text": "Bring glasses or contact lenses if you need them to meet the eyesight standard",
+        "note": "If you normally wear them to drive, you must wear them for the eyesight check and the rest of the test."
+      },
+      {
+        "id": "vehicle-roadworthy",
+        "text": "Your car is insured for the test, taxed, and has a valid MOT if it needs one",
+        "note": "The examiner can refuse to conduct the test in a vehicle that isn't legally roadworthy."
+      },
+      {
+        "id": "l-plates",
+        "text": "L plates (D plates in Wales) are displayed correctly on the front and back",
+        "note": "Required right up until you pass — remove them once you've got your result, not before."
+      },
+      {
+        "id": "vehicle-checks",
+        "text": "You know the location of the main controls and can perform basic safety checks",
+        "note": "You don't need to have learned in this exact car, but you should be comfortable with it."
+      }
+    ]
+  },
+  {
+    "id": "at-the-start",
+    "section": "At the start of the test",
+    "items": [
+      {
+        "id": "eyesight-check",
+        "text": "Eyesight check — read a number plate from 20 metres away",
+        "note": "If you can't read it (even with glasses or contacts), the test ends immediately without going any further."
+      },
+      {
+        "id": "tell-me-question",
+        "text": "One 'tell me' vehicle safety question, asked before you set off",
+        "note": "For example, how you'd check the brakes are working. Practise these in the Show Me Tell Me flashcards."
+      }
+    ]
+  },
+  {
+    "id": "during-the-drive",
+    "section": "During the drive",
+    "items": [
+      {
+        "id": "general-driving",
+        "text": "General driving ability across a range of road types and traffic conditions",
+        "note": "This is the bulk of the test — normal driving, junctions, roundabouts, lane discipline, and reacting appropriately throughout."
+      },
+      {
+        "id": "show-me-question",
+        "text": "One 'show me' vehicle safety question, asked while you're driving",
+        "note": "For example, being asked to use the heated rear window demister while safe to do so."
+      },
+      {
+        "id": "independent-driving",
+        "text": "About 20 minutes of independent driving",
+        "note": "Following directions from a sat nav, a series of traffic signs, or a combination of both — the examiner will explain which."
+      },
+      {
+        "id": "manoeuvre",
+        "text": "One manoeuvre, chosen by the examiner on the day",
+        "note": "Usually one of: parallel park at the side of the road, park in a bay (driving in or reversing in), or pull up on the right, reverse about two car lengths, and rejoin traffic."
+      },
+      {
+        "id": "emergency-stop",
+        "text": "Possibly an emergency stop",
+        "note": "Not asked in every test, but be ready for it throughout — the examiner will give a clear signal when it's time."
+      }
+    ]
+  },
+  {
+    "id": "how-youre-marked",
+    "section": "How you're marked",
+    "items": [
+      {
+        "id": "pass-criteria",
+        "text": "Pass with zero serious or dangerous faults, and generally no more than 15 minor driving faults",
+        "note": "A single serious or dangerous fault fails the test outright, even with an otherwise clean drive — minor faults only add up if the same one keeps repeating or several accumulate."
+      }
+    ]
+  }
+]

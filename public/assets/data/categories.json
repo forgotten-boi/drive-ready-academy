@@ -1,0 +1,54 @@
+[
+  {
+    "id": "alertness",
+    "name": "Alertness"
+  },
+  {
+    "id": "attitude",
+    "name": "Attitude"
+  },
+  {
+    "id": "safety-vehicle",
+    "name": "Safety and Your Vehicle"
+  },
+  {
+    "id": "safety-margins",
+    "name": "Safety Margins"
+  },
+  {
+    "id": "hazard-awareness",
+    "name": "Hazard Awareness"
+  },
+  {
+    "id": "vulnerable-road-users",
+    "name": "Vulnerable Road Users"
+  },
+  {
+    "id": "vehicle-handling",
+    "name": "Vehicle Handling"
+  },
+  {
+    "id": "motorway-rules",
+    "name": "Motorway Rules"
+  },
+  {
+    "id": "rules-of-the-road",
+    "name": "Rules of the Road"
+  },
+  {
+    "id": "road-traffic-signs",
+    "name": "Road and Traffic Signs"
+  },
+  {
+    "id": "documents",
+    "name": "Documents"
+  },
+  {
+    "id": "incidents-accidents",
+    "name": "Incidents, Accidents and Emergencies"
+  },
+  {
+    "id": "vehicle-loading",
+    "name": "Vehicle Loading"
+  }
+]
