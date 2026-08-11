@@ -18,6 +18,7 @@ import { addIcons } from 'ionicons';
 import { flagOutline, flag } from 'ionicons/icons';
 import { MockTestService, MOCK_DURATION_SECONDS, MOCK_PASS_MARK, MOCK_TOTAL } from '../../core/services/mock-test.service';
 import { TheoryDataService } from '../../core/services/theory-data.service';
+import { HapticsService } from '../../core/services/haptics.service';
 import { formatMMSS, toneColor } from '../../core/utils';
 
 addIcons({ 'flag-outline': flagOutline, flag });
@@ -46,6 +47,7 @@ export class MockTestPage {
 
   readonly mockTest = inject(MockTestService);
   private readonly theoryData = inject(TheoryDataService);
+  private readonly haptics = inject(HapticsService);
 
   readonly total = MOCK_TOTAL;
   readonly passMark = MOCK_PASS_MARK;
@@ -116,7 +118,7 @@ export class MockTestPage {
   async trySubmit(): Promise<void> {
     const unanswered = this.mockTest.unansweredCount();
     if (unanswered === 0) {
-      this.mockTest.submit();
+      this.submitAndFeedback();
       return;
     }
     const alert = await this.alertController.create({
@@ -128,12 +130,18 @@ export class MockTestPage {
           text: 'Submit anyway',
           role: 'destructive',
           handler: () => {
-            this.mockTest.submit(true);
+            this.submitAndFeedback(true);
           }
         }
       ]
     });
     await alert.present();
+  }
+
+  private submitAndFeedback(force = false): void {
+    const result = this.mockTest.submit(force);
+    if (!result) return;
+    void (result.pass ? this.haptics.success() : this.haptics.error());
   }
 
   async confirmAbandon(): Promise<void> {

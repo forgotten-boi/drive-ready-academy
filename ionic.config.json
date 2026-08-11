@@ -1,0 +1,7 @@
+{
+  "name": "uk-driving-licence-prep",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
