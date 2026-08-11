@@ -728,6 +728,71 @@ h2[tabindex="-1"]:focus, legend[tabindex="-1"]:focus {
   .progress-row .progress-bar { flex-basis: 100%; order: 3; }
 }
 
+/* ---------- Hazard Perception ---------- */
+
+.hazard-intro { max-width: 720px; margin-bottom: 1.25rem; }
+.hazard-intro p { color: var(--color-text-muted); }
+
+.hazard-diagram-card {
+  max-width: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.hazard-diagram {
+  flex: 1 1 260px;
+  min-width: 220px;
+}
+
+.hazard-diagram .hazard-svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-alt);
+}
+
+.hazard-callout-list {
+  flex: 1 1 260px;
+  min-width: 220px;
+  margin: 0;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.hazard-callout-list li { color: var(--color-text); font-size: 0.92rem; }
+.hazard-callout-list li::marker { font-weight: 800; color: var(--color-primary); }
+
+.hazard-tips {
+  margin: 0;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.hazard-tips li { color: var(--color-text); }
+
+/* Inline SVG diagram styling */
+.hazard-svg__sky { fill: var(--color-surface-alt); }
+.hazard-svg__pavement { fill: #dfe9e8; }
+.hazard-svg__road { fill: #55707a; }
+.hazard-svg__roadline { stroke: #e7edec; stroke-width: 3; }
+.hazard-svg__roadline--dashed { stroke-dasharray: 10 8; }
+.hazard-svg__giveway { stroke: #e7edec; stroke-width: 3; stroke-dasharray: 4 4; }
+.hazard-svg__car { fill: var(--color-primary); }
+.hazard-svg__car--lead { fill: var(--color-primary-dark); }
+.hazard-svg__wheel { fill: #1c2b2f; }
+.hazard-svg__ball { fill: var(--color-warning); }
+.hazard-svg__brakelight { fill: var(--color-danger); }
+.hazard-svg__bikeframe { fill: none; stroke: var(--color-primary-dark); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.hazard-svg__rider { fill: var(--color-accent); }
+
+.hazard-svg__marker circle { fill: var(--color-danger); stroke: var(--color-surface); stroke-width: 2; }
+.hazard-svg__marker text { fill: #fff; font-size: 12px; font-weight: 800; text-anchor: middle; }
+
 /* ---------- Footer ---------- */
 
 .app-footer {
