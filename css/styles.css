@@ -889,6 +889,82 @@ h2[tabindex="-1"]:focus, legend[tabindex="-1"]:focus {
 
 .flashcard-nav { justify-content: center; margin-bottom: 0.5rem; }
 
+/* ---------- Centre finder ---------- */
+
+.centre-disclaimer {
+  max-width: 760px;
+  background: var(--color-surface-alt);
+  border-color: var(--color-border);
+  margin-bottom: 1.25rem;
+}
+
+.centre-disclaimer p {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+.centre-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  max-width: 760px;
+}
+
+.centre-controls__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 220px;
+}
+
+.centre-controls__field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.centre-search-input, .centre-region-select { width: 100%; }
+
+.centre-results-count {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.centre-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.centre-card__name { font-size: 1rem; margin: 0; }
+.centre-card__region { flex-shrink: 0; }
+
+.centre-card__address {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 0.6rem;
+}
+
+.centre-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.centre-tag { background: var(--color-accent-light); color: var(--color-primary-dark); }
+
+.centre-card__notes {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  margin-bottom: 0;
+}
+
 /* ---------- Footer ---------- */
 
 .app-footer {
