@@ -96,4 +96,10 @@
     <ion-button fill="outline" color="medium" (click)="confirmResetProgress()">Reset theory progress</ion-button>
     <ion-button fill="clear" color="danger" (click)="confirmResetEverything()">Reset everything</ion-button>
   </div>
+
+  @if (supportLink.enabled) {
+    <p class="ion-text-center" style="font-size: 0.82rem; color: var(--ion-color-medium); padding: 0 16px 24px;">
+      ☕ <a [href]="supportLink.url" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">{{ supportLink.label }}</a>
+    </p>
+  }
 </ion-content>

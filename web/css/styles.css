@@ -978,6 +978,22 @@ h2[tabindex="-1"]:focus, legend[tabindex="-1"]:focus {
 
 .app-footer p { max-width: 640px; margin: 0 auto; }
 
+.app-footer__support {
+  margin-top: 0.5rem !important;
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+.app-footer__support a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+}
+
+.app-footer__support a:hover {
+  color: var(--color-accent);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 640px) {
