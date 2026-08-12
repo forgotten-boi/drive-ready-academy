@@ -23,6 +23,7 @@ import { PracticalStateService } from '../core/services/practical-state.service'
 import { TheoryDataService } from '../core/services/theory-data.service';
 import { ThemeService, ThemeMode } from '../core/services/theme.service';
 import { toneColor } from '../core/utils';
+import { SUPPORT_LINK } from '../core/config/support.config';
 
 addIcons({
   'sunny-outline': sunnyOutline,
@@ -67,6 +68,7 @@ export class ProgressPage {
   private readonly theoryData = inject(TheoryDataService);
 
   toneColor = toneColor;
+  readonly supportLink = SUPPORT_LINK;
 
   readonly categoryRows = computed<CategoryRow[]>(() => {
     const stats = this.theoryStats.categoryStats();
